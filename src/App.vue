@@ -1,5 +1,7 @@
 <template>
-  <router-view/>
+  <main class="col-10 mx-auto">
+    <router-view/>
+  </main>
 </template>
 
 <style lang="scss">

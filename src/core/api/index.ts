@@ -1,5 +1,5 @@
-import { putProduct } from './product.firebase'
+import { putProduct, getProducts } from './product.firebase'
 
-export class FescBase {
-  static PRODUCT = { put: putProduct }
+export class ChallengeApi {
+  static PRODUCT = { put: putProduct, get: getProducts }
 }
