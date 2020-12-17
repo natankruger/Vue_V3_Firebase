@@ -1,4 +1,4 @@
-import { ProductModel } from './products.model'
+import { ProductModel } from './product.model'
 
 enum movementType {
   entry,

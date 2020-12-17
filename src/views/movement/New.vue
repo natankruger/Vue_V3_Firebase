@@ -1,11 +1,11 @@
 <template>
-  <h1>Home</h1>
+  <h1>Movement new</h1>
 </template>
 
 <script lang="ts">
 import { Vue } from 'vue-class-component'
 
-export default class HomePage extends Vue {}
+export default class MovementNewPage extends Vue {}
 </script>
 
 <style scoped>
