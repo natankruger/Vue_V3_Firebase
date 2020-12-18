@@ -2,8 +2,8 @@ import { Product } from '../entities'
 import { Database } from '@/libs/firebase'
 
 async function putProduct (product: Product) {
-  const newPostKey = Database.ref().child('products').push().key
-  return await Database.ref(`products/${newPostKey}`).set(product)
+  const newProductKey = Database.ref().child('products').push().key
+  return await Database.ref(`products/${newProductKey}`).set(product)
 }
 
 async function getProducts () {

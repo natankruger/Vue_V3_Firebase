@@ -1,7 +1,7 @@
 <template>
   <h1>Product list</h1>
   <section>
-    <div v-for="product in products" :key="product.code">
+    <div v-for="(product, key) in products" :key="key">
       <p>
         {{ product.description }}
       </p>

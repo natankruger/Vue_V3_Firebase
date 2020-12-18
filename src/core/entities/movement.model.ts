@@ -1,13 +1,6 @@
-import { ProductModel } from './product.model'
-
-enum movementType {
-  entry,
-  out
-}
-
 export interface MovementModel {
-  product: ProductModel;
-  type: movementType;
+  productCode: string;
+  type: string;
   value: number;
   date: string;
   quantity: number;

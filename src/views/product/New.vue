@@ -1,7 +1,7 @@
 <template>
   <h1>Novo produto</h1>
-  <form>
-    <div class="form-group mt-3">
+  <form @submit.prevent="create">
+    <div class="form-group mt-5">
       <label for="description">Aqui é onde você escreve uma descrição desse produto</label>
       <input v-model="product.description"
              type="text"
@@ -11,7 +11,7 @@
              required>
     </div>
 
-    <div class="form-group mt-3">
+    <div class="form-group mt-5">
       <label for="type">Aqui tente escrever em apenas uma palavra o que é esse produto</label>
       <input v-model="product.type"
              type="text"
@@ -21,7 +21,7 @@
              required>
     </div>
 
-    <div class="form-group mt-3">
+    <div class="form-group mt-5">
       <label for="price">Este é o preço pelo qual o fornecedor vende o produto</label>
       <input v-model="product.price"
              type="number"
@@ -31,7 +31,7 @@
              required>
     </div>
 
-    <div class="form-group mt-3">
+    <div class="form-group mt-5">
       <label for="quantity">E por ultimo mas não menos importante, a quantidade em estoque</label>
       <input v-model="product.quantity"
              type="number"
@@ -41,7 +41,7 @@
              required>
     </div>
 
-    <button type="button" class="btn btn-primary mt-3" v-on:click="create">Criar</button>
+    <button type="submit" class="btn btn-primary mt-5">Criar</button>
   </form>
 </template>
 
