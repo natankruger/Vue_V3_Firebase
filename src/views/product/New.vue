@@ -31,16 +31,6 @@
              required>
     </div>
 
-    <div class="form-group mt-5">
-      <label for="quantity">E por ultimo mas não menos importante, a quantidade em estoque</label>
-      <input v-model="product.quantity"
-             type="number"
-             class="form-control"
-             aria-labelledby="quantity"
-             placeholder="Ex: 42"
-             required>
-    </div>
-
     <button type="submit" class="btn btn-primary mt-5">Criar</button>
   </form>
 </template>

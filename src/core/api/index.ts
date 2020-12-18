@@ -1,7 +1,7 @@
-import { putProduct, getProducts } from './product.firebase'
+import { putProduct, getProducts, updateProduct, getProduct } from './product.firebase'
 import { putMovement, getMovements } from './movement.firebase'
 
 export class ChallengeApi {
-  static PRODUCT = { put: putProduct, get: getProducts }
+  static PRODUCT = { put: putProduct, get: getProducts, update: updateProduct, getOne: getProduct }
   static MOVEMENT = { put: putMovement, get: getMovements }
 }
