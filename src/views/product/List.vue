@@ -3,7 +3,9 @@
   <section>
     <div v-for="(product, key) in products" :key="key">
       <p>
-        {{ product.description }}
+        Código: {{ product.code }} -
+        {{ product.description }} -
+        Quantidade em estoque: {{ product.quantity }}
       </p>
     </div>
   </section>

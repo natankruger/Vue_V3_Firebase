@@ -93,7 +93,7 @@ export default class MovementNewPage extends Vue {
         product.quantity = newQuantity
         ChallengeApi.PRODUCT.update(this.productFID, product)
         ChallengeApi.MOVEMENT.put(this.movement)
-        this.$router.push({ name: 'ProductListPage' })
+        this.$router.push({ name: 'MovementListPage' })
       } else {
         this.error = `Você não pode movimentar ${this.movement.quantity} unidades, pois só tem ${product.quantity} unidades em estoque`
         this.movement = {
