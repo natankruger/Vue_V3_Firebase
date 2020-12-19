@@ -11,9 +11,6 @@ import ProductListPage from '@/views/product/List.vue'
 import MovementNewPage from '@/views/movement/New.vue'
 import MovementListPage from '@/views/movement/List.vue'
 
-// Report
-import RevenueByProductPage from '@/views/report/RevenueByProduct.vue'
-
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -39,11 +36,6 @@ const routes: Array<RouteRecordRaw> = [
     path: '/movements',
     name: 'MovementListPage',
     component: MovementListPage
-  },
-  {
-    path: '/revenue_by_product',
-    name: 'RevenueByProductPage',
-    component: RevenueByProductPage
   }
 ]
 

@@ -8,7 +8,9 @@
              class="form-control"
              aria-labelledby="description"
              placeholder="Ex: Manivela azul para computadores muito lentos"
-             required>
+             @blur="descriptionValidation"
+             required />
+      <small class="error-text" v-if="errors.description">{{ errors.description }}</small>
     </div>
 
     <div class="form-group mt-5">
@@ -18,7 +20,9 @@
              class="form-control"
              aria-labelledby="type"
              placeholder="Ex: Eletrodomestico"
-             required>
+             @blur="typeValidation"
+             required />
+      <small class="error-text" v-if="errors.type">{{ errors.type }}</small>
     </div>
 
     <div class="form-group mt-5">
@@ -28,7 +32,9 @@
              class="form-control"
              aria-labelledby="price"
              placeholder="Ex: R$: 400,00"
-             required>
+             @blur="priceValidation"
+             required />
+      <small class="error-text" v-if="errors.price">{{ errors.price }}</small>
     </div>
 
     <button type="submit" class="btn btn-primary mt-5">Criar</button>
@@ -49,9 +55,56 @@ export default class ProductNewPage extends Vue {
     quantity: 0
   }
 
+  errors = {
+    description: '',
+    type: '',
+    price: ''
+  }
+
+  anyFormError () {
+    const { description, type, price } = this.errors
+
+    return description.length > 0 || type.length > 0 || price.length > 0
+  }
+
+  descriptionValidation () {
+    const words = this.product.description.split(' ')
+
+    if (words.length < 2) {
+      this.errors.description = 'Precisa ter no mínimo duas palavras'
+    } else {
+      this.errors.description = ''
+    }
+  }
+
+  typeValidation () {
+    const words = this.product.type.split(' ')
+
+    if (words.length > 2) {
+      this.errors.type = 'Precisa ter no maximo duas palavras'
+    } else {
+      this.errors.type = ''
+    }
+  }
+
+  priceValidation () {
+    if (+this.product.price <= 0) {
+      this.errors.price = 'Preencha o valor'
+    } else {
+      this.errors.price = ''
+    }
+  }
+
   create () {
-    this.product.code = this.randomCode()
-    ChallengeApi.PRODUCT.put(this.product)
+    this.descriptionValidation()
+    this.typeValidation()
+    this.priceValidation()
+
+    if (!this.anyFormError()) {
+      this.product.code = this.randomCode()
+      ChallengeApi.PRODUCT.put(this.product)
+      this.$router.push({ name: 'Home' })
+    }
   }
 
   randomCode () {
@@ -60,5 +113,8 @@ export default class ProductNewPage extends Vue {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.error-text {
+  color: map-get($colors, danger);
+}
 </style>
