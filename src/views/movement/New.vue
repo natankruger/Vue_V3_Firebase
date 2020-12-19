@@ -1,5 +1,11 @@
 <template>
   <h1>Nova Movimentação</h1>
+
+  <div class="alert alert-danger" role="alert" v-if="error">
+    {{ error }}
+    <span class="alert-close">&times;</span>
+  </div>
+
   <form @submit.prevent="create">
 
     <div class="form-group mt-5">
@@ -8,7 +14,7 @@
         <option v-for="(product, key) in products"
                 :key="key"
                 :value="key">
-          {{ key }} - {{ product.code }} - {{ product.type }} - {{ product.description }}
+          {{ product.code }} - {{ product.type }} - {{ product.description }}
         </option>
       </select>
     </div>
@@ -27,7 +33,7 @@
              type="text"
              class="form-control"
              aria-labelledby="value"
-             placeholder="Ex: mmxre"
+             placeholder="Ex: 119"
              required>
     </div>
 
@@ -37,7 +43,7 @@
              type="text"
              class="form-control"
              aria-labelledby="quantity"
-             placeholder="Ex: mmxre"
+             placeholder="Ex: 78"
              required>
     </div>
 
@@ -53,6 +59,7 @@ import { ChallengeApi } from '@/core/api'
 export default class MovementNewPage extends Vue {
   products: Product[] = []
   productFID = ''
+  error = ''
 
   movement: Movement = {
     productCode: '',
@@ -72,18 +79,40 @@ export default class MovementNewPage extends Vue {
   create () {
     ChallengeApi.PRODUCT.getOne(this.productFID).then((product: Product) => {
       this.movement.date = new Date().toISOString()
-
       this.movement.productCode = product.code
-      const newQuantity = +product.quantity + +this.movement.quantity
-      product.quantity = newQuantity
 
-      ChallengeApi.PRODUCT.update(this.productFID, product)
+      let newQuantity = 0
 
-      ChallengeApi.MOVEMENT.put(this.movement)
+      if (this.movement.type === 'entrada') {
+        newQuantity = +product.quantity + +this.movement.quantity
+      } else {
+        newQuantity = +product.quantity - +this.movement.quantity
+      }
+
+      if (newQuantity > 0) {
+        product.quantity = newQuantity
+        ChallengeApi.PRODUCT.update(this.productFID, product)
+        ChallengeApi.MOVEMENT.put(this.movement)
+        this.$router.push({ name: 'ProductListPage' })
+      } else {
+        this.error = `Você não pode movimentar ${this.movement.quantity} unidades, pois só tem ${product.quantity} unidades em estoque`
+        this.movement = {
+          productCode: '',
+          type: 'entrada',
+          value: 0,
+          date: '',
+          quantity: 0
+        }
+        this.productFID = ''
+      }
     })
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.alert-close {
+  cursor: pointer;
+  float: right;
+}
 </style>
