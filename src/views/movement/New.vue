@@ -1,4 +1,8 @@
 <template>
+  <div class="d-flex justify-content-evenly my-3">
+    <router-link to="/" class="btn btn-primary">Voltar</router-link>
+  </div>
+
   <h1>Nova Movimentação</h1>
 
   <div class="alert alert-danger" role="alert" v-if="error">

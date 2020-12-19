@@ -1,4 +1,8 @@
 <template>
+  <div class="d-flex justify-content-evenly my-3">
+    <router-link to="/" class="btn btn-primary">Voltar</router-link>
+  </div>
+
   <h1>Novo produto</h1>
   <form @submit.prevent="create">
     <div class="form-group mt-5">

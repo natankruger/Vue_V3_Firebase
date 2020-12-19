@@ -1,30 +1,36 @@
 <template>
+  <div class="d-flex justify-content-evenly my-3">
+    <router-link to="/" class="btn btn-primary">Voltar</router-link>
+    <router-link to="/movement/new" class="btn btn-primary">Nova movimentação</router-link>
+  </div>
+
   <h1>Lucro por produto</h1>
   <section>
     <span class="spinner-border" role="status" v-if="loading"></span>
 
     <div v-if="!loading">
-      <div v-for="(revenue, key) in revenuesByProduct" :key="key">
-        <p>
-          <strong>Código do produto:</strong> {{ revenue.productCode }} -
-          <strong>Quantidade de saida:</strong> {{ revenue.outQuantity }} -
-          <strong>Lucro R$:</strong> {{ revenue.value > 0 ? revenue.value : 0 }}
-        </p>
-      </div>
+      <revenue-card v-for="(revenue, key) in revenuesByProduct" :key="key" :revenue="revenue" />
     </div>
   </section>
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-class-component'
+import { Vue, Options } from 'vue-class-component'
 import { Movement } from '@/core/entities'
 import { ChallengeApi } from '@/core/api'
+import RevenueCard from '@/components/RevenueCard.vue'
 
 interface Revenue {
   productCode: string;
   outQuantity: number;
   value: number;
 }
+
+@Options({
+  components: {
+    RevenueCard
+  }
+})
 
 export default class MovementListPage extends Vue {
   movements: Movement[] =[]
