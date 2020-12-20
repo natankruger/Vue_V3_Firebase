@@ -5,9 +5,8 @@
 
   <h1>Nova Movimentação</h1>
 
-  <div class="alert alert-danger" role="alert" v-if="error">
+  <div class="alert alert-danger" role="alert" v-if="error" @click="dismissError">
     {{ error }}
-    <span class="alert-close">&times;</span>
   </div>
 
   <form @submit.prevent="create">
@@ -34,7 +33,7 @@
     <div class="form-group mt-5">
       <label for="value">Valor da movimentação</label>
       <input v-model="movement.value"
-             type="text"
+             type="number"
              class="form-control"
              aria-labelledby="value"
              placeholder="Ex: 119"
@@ -44,7 +43,7 @@
     <div class="form-group mt-5">
       <label for="quantity">Quantidade de produtos na movimentação</label>
       <input v-model="movement.quantity"
-             type="text"
+             type="number"
              class="form-control"
              aria-labelledby="quantity"
              placeholder="Ex: 78"
@@ -78,6 +77,10 @@ export default class MovementNewPage extends Vue {
     ChallengeApi.PRODUCT.get().then((value: any) => {
       this.products = value
     })
+  }
+
+  dismissError () {
+    this.error = ''
   }
 
   create () {

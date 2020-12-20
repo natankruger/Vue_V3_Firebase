@@ -1,7 +1,7 @@
 <template>
-  <div class="card col-4 mx-auto mt-4 pt-2">
+  <div class="card col-md-4 col-12 mx-auto mt-4 pt-2">
     <p class="mb-0">
-      Código: {{ product.code }}
+      Código: <strong>{{ product.code }}</strong>
     </p>
 
     <h4>

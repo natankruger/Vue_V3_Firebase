@@ -46,20 +46,20 @@
 
   <h3>Ações feitas para o desafio</h3>
   <section class="row mx-auto">
-    <div class="col-3">
-      <router-link to="/product/new" class="btn btn-primary">Criar novo produto</router-link>
+    <div class="col-md-3 col-6 mx-md-0 mx-auto mb-4">
+      <router-link to="/product/new" class="btn btn-primary btn-nav">Criar novo produto</router-link>
     </div>
 
-    <div class="col-3">
-      <router-link to="/products" class="btn btn-primary">Consulta de produtos</router-link>
+    <div class="col-md-3 col-6 mx-md-0 mx-auto mb-4">
+      <router-link to="/products" class="btn btn-primary btn-nav">Consulta de produtos</router-link>
     </div>
 
-    <div class="col-3">
-      <router-link to="/movement/new" class="btn btn-primary">Nova movimentação de estoque</router-link>
+    <div class="col-md-3 col-6 mx-md-0 mx-auto mb-4">
+      <router-link to="/movement/new" class="btn btn-primary btn-nav">Nova movimentação de estoque</router-link>
     </div>
 
-    <div class="col-3">
-      <router-link to="/movements" class="btn btn-primary">Consulta de lucro por produto</router-link>
+    <div class="col-md-3 col-6 mx-md-0 mx-auto mb-4">
+      <router-link to="/movements" class="btn btn-primary btn-nav">Consulta de lucro por produto</router-link>
     </div>
 
   </section>
@@ -74,5 +74,12 @@ export default class HomePage extends Vue {}
 <style lang="scss" scoped>
 .tec-list {
   list-style: none;
+}
+
+.btn-nav {
+  display: flex;
+  min-height: 62px;
+  justify-content: center;
+  align-items: center;
 }
 </style>
