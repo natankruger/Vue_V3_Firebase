@@ -35,11 +35,15 @@
     </li>
 
     <li>
+      <a href="https://sass-lang.com/" target="_blank">SASS</a>
+    </li>
+
+    <li>
       <a href="https://www.cypress.io/" target="_blank">Cypress</a>
     </li>
 
     <li>
-      <a href="https://sass-lang.com/" target="_blank">SASS</a>
+      <a href="https://jestjs.io/" target="_blank">Jest</a>
     </li>
 
   </ul>

@@ -4,7 +4,7 @@
       Você teve
     </small>
     <h4 class="mb-0">
-      <strong>
+      <strong id="rev-value">
         R$: {{ revenue.value > 0 ? revenue.value : 0 }}
       </strong>
     </h4>
@@ -14,15 +14,15 @@
 
     <p class="mt-4">
       Vendendo
-      <strong>
+      <strong id="rev-quantity">
         {{ revenue.outQuantity }}
       </strong>
       unidades
     </p>
 
-    <p class="">
+    <p>
       O código dele é:
-      <strong>{{ revenue.productCode }}</strong>
+      <strong id="rev-code">{{ revenue.productCode }}</strong>
     </p>
 
   </div>

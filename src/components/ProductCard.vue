@@ -1,18 +1,18 @@
 <template>
   <div class="card col-md-4 col-12 mx-auto mt-4 pt-2">
-    <p class="mb-0">
+    <p class="mb-0" id="p-code">
       Código: <strong>{{ product.code }}</strong>
     </p>
 
-    <h4>
+    <h4 id="p-desc">
       {{ product.type }} - {{ product.description }}
     </h4>
 
-    <small>
+    <small id="p-stock">
       Estoque: {{ product.quantity }}
     </small>
 
-    <small>
+    <small id="p-price">
       Preço no fornecedor: R$ {{ product.price }}
     </small>
   </div>
