@@ -1,4 +1,4 @@
-export interface MovementModel {
+export interface ExampleModel {
   productCode: string;
   type: string;
   value: number;

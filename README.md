@@ -1,4 +1,6 @@
-# fesc-challenge
+# Firebase-boilerplate
+
+You must configure your own firebase
 
 ## Project setup
 ```

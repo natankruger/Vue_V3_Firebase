@@ -1,4 +1,3 @@
-import { MovementModel } from './movement.model'
-import { ProductModel } from './product.model'
+import { ExampleModel } from './example.model'
 
-export { MovementModel as Movement, ProductModel as Product }
+export { ExampleModel as Example }
